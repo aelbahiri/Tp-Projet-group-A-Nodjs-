@@ -4,12 +4,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // import routes
-const categories = require('./routes/categories');
-const comment = require('./routes/comment');
-const posts = require('./routes/posts');
-const tags = require('./routes/tags');
-const types = require('./routes/posts');
-const users = require('./routes/users');
+// const categories = require('./routes/categories');
+// const comment = require('./routes/comment');
+// const posts = require('./routes/posts');
+// const tags = require('./routes/tags');
+const types = require('./routes/types');
+// const users = require('./routes/users');
 
 
 // connection mysql
@@ -25,11 +25,12 @@ const User = require('./models/user');
 const Tag = require('./models/tag');
 
 const app = express();
-// app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-
+app.use(cors())
+    // midlleware
+app.use('/types', types)
 
 User.belongsTo(Type);
 Type.hasMany(User);
