@@ -12,10 +12,11 @@ exports.getAllPosts = (req, res) => {
 }
 
 exports.addPosts = (req, res) => {
-    let { title, description, urlImage, active }
+    let { title, description, urlImage, active } = req.body;
+
     Post.create({
         title: title,
-        descripotion: description,
+        description: description,
         urlImage: urlImage,
         active: active
     })
