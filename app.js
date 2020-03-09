@@ -5,6 +5,7 @@ const cors = require('cors');
 
 // import routes
 const posts = require('./routes/posts');
+const categories = require('./routes/categories');
 
 // connection mysql
 const connection = require('./config/database');
@@ -19,6 +20,12 @@ const User = require('./models/user');
 const Tag = require('./models/tag');
 
 const app = express();
+
+
+
+
+app.use('/categories', categories)
+
 
 
 
