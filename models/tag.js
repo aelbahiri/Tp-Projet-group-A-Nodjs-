@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const connection = require('./../config/database');
 
-const tag = connection.define('category', {
+const tag = connection.define('tag', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
