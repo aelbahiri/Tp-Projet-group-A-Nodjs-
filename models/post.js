@@ -7,6 +7,10 @@ const post = connection.define('posts', {
         primaryKey: true,
         autoIncrement: true
     },
+    urlImage: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     title: {
         type: Sequelize.STRING,
         allowNull: false
@@ -25,4 +29,4 @@ const post = connection.define('posts', {
     },
 });
 
-module.exports = posts;
+module.exports = post;
