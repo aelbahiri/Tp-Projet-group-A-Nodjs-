@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-Parser');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // import routes
@@ -17,12 +17,12 @@ const connection = require('./config/database');
 
 // models
 const Post = require('./models/post');
-const Categories = require('/models/categories');
-const Comment = require('/models/comment');
-const Posts = require('/models/post');
-const Tags = require('/models/tags');
-const Types = require('/models/types');
-const Users = require('/models/users');
+const Comment = require('./models/comment');
+const Category = require('./models/category');
+const Type = require('./models/type');
+
+const User = require('./models/user');
+const Tag = require('./models/tag');
 
 const app = express();
 // app.use(express.static(path.join(__dirname, 'public')))
@@ -30,15 +30,28 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
-app.use(cors())
-app.use('/categories', categories)
-app.use('/comment', comment)
-app.use('/users', users),
-    app.use('/products', products)
-app.use('/categories', categories)
-app.use('/users', users)
 
-connection.sync()
+User.belongsTo(Type);
+Type.hasMany(User);
+
+Comment.belongsTo(User);
+User.hasMany(Comment);
+
+Post.belongsTo(User);
+User.hasMany(Post);
+
+
+Comment.belongsTo(Post);
+Post.hasMany(Comment);
+
+Post.belongsTo(Category);
+Category.hasMany(Post);
+
+Post.belongsToMany(Tag, { through: 'tag_post' });
+Tag.belongsToMany(Post, { through: 'tag_post' });
+
+
+connection.sync({ force: true })
     .then(result => {
 
         app.listen(5000, () => console.log('Server ON'))
@@ -46,5 +59,3 @@ connection.sync()
     .catch((err) => {
         console.log('error: ', err)
     })
-
-const Post = require('./../models/post');
