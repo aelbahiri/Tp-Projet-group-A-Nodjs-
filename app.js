@@ -4,7 +4,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // import routes
-const posts = require('./routes/posts');
+// const categories = require('./routes/categories');
+// const comment = require('./routes/comment');
+// const posts = require('./routes/posts');
+// const tags = require('./routes/tags');
+const types = require('./routes/types');
+// const users = require('./routes/users');
+
 
 // connection mysql
 const connection = require('./config/database');
@@ -22,7 +28,13 @@ const app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+<<<<<<< HEAD
 app.use(posts)
+=======
+app.use(cors())
+    // midlleware
+app.use('/types', types)
+>>>>>>> a82370ef20fad48150fb07da4a1ebc9c7b77b4e5
 
 User.belongsTo(Type);
 Type.hasMany(User);
