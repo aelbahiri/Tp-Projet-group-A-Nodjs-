@@ -1,5 +1,5 @@
-const Sequelize = require('Sequelize');
 const connection = require('../config/database');
+const Sequelize = require('Sequelize');
 
 const post = connection.define('post', {
     id: {
@@ -26,6 +26,13 @@ const post = connection.define('post', {
     urlImage: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+
+    active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true
     }
 
 });
+
+module.exports = post; 
