@@ -10,11 +10,16 @@ const comment = connection.define('comment', {
         primaryKey: true,
         autoIncrement: true
     },
-  
+    content : {
+     type: Sequelize.STRING ,  
+     allowNull: false     
+      
+  },
     active: {
         type: Sequelize.BOOLEAN,
         allowNull: false
     }
+
 });
 
 module.exports = comment;

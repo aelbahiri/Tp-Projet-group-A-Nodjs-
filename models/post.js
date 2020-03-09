@@ -13,11 +13,6 @@ const post = connection.define('post', {
         allowNull: false
     },
 
-    auteur: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-
     description: {
         type: Sequelize.STRING,
         allowNull: false
