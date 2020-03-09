@@ -7,10 +7,10 @@ const category = connection.define('category', {
         primaryKey: true,
         autoIncrement: true
     },
-    // title: {
-    //     type: Sequelize.STRING,
-    //     allowNull: false
-    // },
+    title: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     active: {
         type: Sequelize.BOOLEAN,
         allowNull: true
