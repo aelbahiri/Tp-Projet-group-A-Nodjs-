@@ -7,7 +7,7 @@ const tag = connection.define('tag', {
         primaryKey: true,
         autoIncrement: true
     },
-    lebelle: {
+    labelle: {
         type: Sequelize.STRING,
         allowNull: false
     },
