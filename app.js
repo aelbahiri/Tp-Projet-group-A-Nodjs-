@@ -11,6 +11,12 @@ const connection = require('./config/database');
 
 // models
 const Post = require('./models/post');
+const Comment = require('./models/comment');
+const Category = require('./models/category');
+const Types = require('./models/type');
+
+const Users = require('./models/user');
+const Tags = require('./models/tag');
 
 const app = express();
 
@@ -18,7 +24,7 @@ const app = express();
 
 
 
-connection.sync()
+connection.sync({force:true})
     .then(result => {
 
         app.listen(5000, () => console.log('Server ON'))
