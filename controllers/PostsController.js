@@ -20,6 +20,7 @@ exports.addPosts = (req, res) => {
         urlImage: urlImage,
         active: active
     })
+
         .then((post) => {
             res.status(201).json({ error: false, data: post })
         })
