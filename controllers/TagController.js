@@ -1,8 +1,6 @@
 const Tag = require('../models/tag');
 const Post = require('../models/post');
 
-
-
 exports.getAllTags = (req, res) => {
 
     Tag

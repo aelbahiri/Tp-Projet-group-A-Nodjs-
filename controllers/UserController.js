@@ -1,6 +1,9 @@
 const User = require('./../models/user');
 
-exports.getAllUsers = (req, res) => {
+// ...rest of the initial code omitted for simplicity.
+const { validationResult } = require('express-validator');
+
+exports.getAllUsers =  (req, res) => {
    
     User
         .findAll()
@@ -13,6 +16,14 @@ exports.getAllUsers = (req, res) => {
 }
 
 exports.storeUser = (req, res) => {
+     
+   // Finds the validation errors in this request and wraps them in an object with handy functions
+  const errors = validationResult(req); 
+//   console.log(errors);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
     console.log(req.body)
     let { name, email, password } = req.body;
     console.log(req.body)
@@ -63,15 +74,6 @@ exports.deleteUser =  (req, res) => {
 
     
 }
-
-// exports.editCategory =  (req, res) => {
-//     Category.findByPk(req.params.id)
-//            .then(category => {
-//                res.render('category/edit', {
-//                    category: category
-//                })
-//            })
-// }
 
 exports.patchUser = (req, res) => {
     
