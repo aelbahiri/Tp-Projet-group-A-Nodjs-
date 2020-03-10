@@ -53,7 +53,15 @@ exports.showOneUser = async (req, res) => {
 }
 
 exports.deleteUser =  (req, res) => {
-    return res.send('suppression')
+    // return res.send('suppression')
+
+    let id = req.params.id;
+    User.destroy({ where: { id: id } })
+    .then(result => res.status(200).json({ error: false, data: result }))
+    .catch(err => res.status(400).json({ error: true, message: 'bad request!' }))
+
+
+    
 }
 
 // exports.editCategory =  (req, res) => {

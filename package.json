@@ -1,10 +1,19 @@
 {
-  "name": "Tp-Projet-group-A-Nodjs-",
+  "name": "tp_projet_group_a_nodjs_",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "dependencies": {
+    "body_parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2",
+    "sequelize": "^5.21.5"
+  },
+  "devDependencies": {},
   "scripts": {
-    "dev": "nodemon app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -16,13 +25,5 @@
   "bugs": {
     "url": "https://github.com/aelbahiri/Tp-Projet-group-A-Nodjs-/issues"
   },
-  "homepage": "https://github.com/aelbahiri/Tp-Projet-group-A-Nodjs-#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mysql2": "^2.1.0",
-    "nodemon": "^2.0.2",
-    "sequelize": "^5.21.5"
-  }
+  "homepage": "https://github.com/aelbahiri/Tp-Projet-group-A-Nodjs-#readme"
 }
