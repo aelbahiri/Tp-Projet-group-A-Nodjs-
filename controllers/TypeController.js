@@ -3,7 +3,6 @@ const Type = require('../models/type');
 
 
 exports.getAllTypes = (req, res) => {
-    // res.send("rahma")
     Type
         .findAll({ include: [{ model: User }] })
         .then((types) => {
