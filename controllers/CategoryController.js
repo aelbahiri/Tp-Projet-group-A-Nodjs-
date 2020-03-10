@@ -24,13 +24,11 @@ exports.storeCategory = (req, res) => {
 
     let {
         title,
-        icon,
         active
     } = req.body;
 
     Category.create({
             title: title,
-            icon: icon,
             active: active
         })
         .then((category) => res.status(201).json({
@@ -48,13 +46,11 @@ exports.updateCategory = (req, res) => {
     console.log(req.body)
     let {
         title,
-        icon,
         active
     } = req.body;
 
     Category.update({
             title: title,
-            icon: icon,
             active: (active == 'on') ? 1 : 0
         }, {
             where: {
