@@ -7,7 +7,7 @@ const type = connection.define('type', {
         primaryKey: true,
         autoIncrement: true
     },
-    title: {
+    label: {
         type: Sequelize.STRING,
         allowNull: false
     },
