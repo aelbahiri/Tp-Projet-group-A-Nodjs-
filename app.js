@@ -5,12 +5,9 @@ const cors = require('cors');
 
 // import routes
 const posts = require('./routes/posts');
-<<<<<<< HEAD
 const users = require('./routes/users');
 // const categories = require('./routes/categories');
-=======
 const categories = require('./routes/categories');
->>>>>>> 569f87fda0a8d890e59bfe16b64197bc32f7e06a
 // const comment = require('./routes/comment');
 // const posts = require('./routes/posts');
 // const tags = require('./routes/tags');
