@@ -6,13 +6,8 @@ const cors = require('cors');
 // import routes
 const posts = require('./routes/posts');
 const users = require('./routes/users');
-// const categories = require('./routes/categories');
 const categories = require('./routes/categories');
-// const comment = require('./routes/comment');
-// const posts = require('./routes/posts');
-// const tags = require('./routes/tags');
 const types = require('./routes/types');
-// const users = require('./routes/users');
 
 
 // connection mysql
