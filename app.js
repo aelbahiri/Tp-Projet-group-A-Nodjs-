@@ -5,6 +5,8 @@ const cors = require('cors');
 
 // import routes
 const posts = require('./routes/posts');
+const users = require('./routes/users');
+// const categories = require('./routes/categories');
 const categories = require('./routes/categories');
 // const comment = require('./routes/comment');
 // const posts = require('./routes/posts');
@@ -29,10 +31,15 @@ const app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+
+app.use(users)
+
 app.use(posts)
 app.use(cors())
-    // midlleware
+
+// midlleware
 app.use('/types', types)
+
 
 
 app.use('/categories', categories)
