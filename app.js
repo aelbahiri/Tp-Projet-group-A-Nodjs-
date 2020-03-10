@@ -29,12 +29,12 @@ const Tag = require('./models/tag');
 
 
 
-app.use(posts)
 
 // midlleware
 app.use('/types', types)
 app.use('/categories', categories)
 app.use('/users', users)
+app.use('/posts', posts)
 
 
 
