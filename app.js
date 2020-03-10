@@ -32,7 +32,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
-app.use(users)
 
 app.use(posts)
 app.use(cors())
@@ -40,9 +39,8 @@ app.use(cors())
 // midlleware
 app.use('/types', types)
 
-
-
 app.use('/categories', categories)
+app.use('/users', users)
 
 
 
