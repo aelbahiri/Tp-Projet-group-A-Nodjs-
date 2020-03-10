@@ -1,6 +1,4 @@
-// const Category = require('../models/category');
 const Post = require('../models/post');
-
 
 exports.getAllPosts = (req, res) => {
     Post.findAll()
