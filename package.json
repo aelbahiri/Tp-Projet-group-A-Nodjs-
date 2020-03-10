@@ -1,28 +1,28 @@
 {
-    "name": "Tp-Projet-group-A-Nodjs-",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/aelbahiri/Tp-Projet-group-A-Nodjs-.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/aelbahiri/Tp-Projet-group-A-Nodjs-/issues"
-    },
-    "homepage": "https://github.com/aelbahiri/Tp-Projet-group-A-Nodjs-#readme",
-    "dependencies": {
-        "body-parser": "^1.19.0",
-        "cors": "^2.8.5",
-        "express": "^4.17.1",
-        "mysql2": "^2.1.0",
-        "nodemon": "^2.0.2",
-        "sequelize": "^5.21.5"
-    }
+  "name": "Tp-Projet-group-A-Nodjs-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aelbahiri/Tp-Projet-group-A-Nodjs-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aelbahiri/Tp-Projet-group-A-Nodjs-/issues"
+  },
+  "homepage": "https://github.com/aelbahiri/Tp-Projet-group-A-Nodjs-#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2",
+    "sequelize": "^5.21.5"
+  }
 }
