@@ -28,10 +28,10 @@ exports.storeType = (req, res) => {
 }
 
 exports.updateType = (req, res) => {
-    let { title, active } = req.body;
+    let { label, active } = req.body;
 
     Type.update({
-            title: title,
+            label: label,
             active: (active == 'on') ? 1 : 0
         }, {
             where: { id: req.params.id }
