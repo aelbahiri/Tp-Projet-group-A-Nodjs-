@@ -30,4 +30,4 @@ const post = connection.define('post', {
 
 });
 
-module.exports = post; 
+module.exports = post;
