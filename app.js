@@ -32,27 +32,42 @@ const Type = require('./models/type');
 const User = require('./models/user');
 const Tag = require('./models/tag');
 
-// // midlleware
-// // app.use('/types', types)
 
-// User.belongsTo(Type);
-// Type.hasMany(User);
-
-// Comment.belongsTo(User);
-// User.hasMany(Comment);
-
-// Post.belongsTo(User);
-// User.hasMany(Post);
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 
-// Comment.belongsTo(Post);
-// Post.hasMany(Comment);
 
-// Post.belongsTo(Category);
-// Category.hasMany(Post);
+app.use(posts)
+app.use(cors())
 
-// Post.belongsToMany(Tag, { through: 'tag_post' });
-// Tag.belongsToMany(Post, { through: 'tag_post' });
+// midlleware
+app.use('/types', types)
+
+app.use('/categories', categories)
+app.use('/users', users)
+
+
+
+
+User.belongsTo(Type);
+Type.hasMany(User);
+
+Comment.belongsTo(User);
+User.hasMany(Comment);
+
+Post.belongsTo(User);
+User.hasMany(Post);
+
+
+Comment.belongsTo(Post);
+Post.hasMany(Comment);
+
+Post.belongsTo(Category);
+Category.hasMany(Post);
+
+Post.belongsToMany(Tag, { through: 'tag_post' });
+Tag.belongsToMany(Post, { through: 'tag_post' });
 
 
 connection.sync()
