@@ -19,7 +19,6 @@ const types = require('./routes/types');
 
 // // connection mysql
 const connection = require('./config/database');
-const app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
@@ -33,20 +32,10 @@ const Type = require('./models/type');
 const User = require('./models/user');
 const Tag = require('./models/tag');
 
-<<<<<<< HEAD
 
 // Midlle Ware
 app.use('/types', types)
-app.use('/posts', posts)
-
-=======
-
-
-
-
-// midlleware
-app.use('/types', types)
->>>>>>> 04a9375a23a437b49a95683667fb747b5e1b25b7
+// app.use('/posts', posts)
 app.use('/categories', categories)
 app.use('/users', users)
 app.use('/posts', posts)
