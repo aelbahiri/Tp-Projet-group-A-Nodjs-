@@ -3,8 +3,8 @@ const PostsController = require('./../controllers/PostsController')
 
 const router = express.Router();
 
-router.get('/posts', PostsController.getAllPosts);
-router.post('/posts', PostsController.storePosts);
+router.get('', PostsController.getAllPosts);
+router.post('', PostsController.addPosts);
 // router.put('/:id', PostsController.updatePosts);
 // //router.get('/:id/edit', PostsController.editPosts)
 // router.get('/:id', PostsController.showOnePosts)
