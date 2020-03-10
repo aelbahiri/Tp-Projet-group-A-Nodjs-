@@ -1,7 +1,14 @@
 const express = require('express');
-const path = require('path');
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const app = express();
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+
+
+app.use(cors())
 
 // import routes
 const posts = require('./routes/posts');
@@ -10,9 +17,8 @@ const categories = require('./routes/categories');
 const types = require('./routes/types');
 
 
-// connection mysql
+// // connection mysql
 const connection = require('./config/database');
-const app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
@@ -27,16 +33,12 @@ const User = require('./models/user');
 const Tag = require('./models/tag');
 
 
-
-
-
-// midlleware
+// Midlle Ware
 app.use('/types', types)
+// app.use('/posts', posts)
 app.use('/categories', categories)
 app.use('/users', users)
 app.use('/posts', posts)
-
-
 
 
 User.belongsTo(Type);

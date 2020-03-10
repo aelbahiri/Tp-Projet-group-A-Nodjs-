@@ -2,7 +2,6 @@ const Category = require('./../models/category');
 
 exports.getAllCategories = (req, res) => {
 
-    
     Category
         .findAll()
         .then((categories) => {
@@ -81,12 +80,14 @@ exports.showOneCategory = async (req, res) => {
             message: 'category not found'
         })
     }
-
-
 }
 
 exports.deleteCategory = (req, res) => {
-    return res.send('suppression')
+    // return res.send('suppression')
+    let id = req.params.id;
+    Category.destroy({ where: { id: id } })
+    .then(result => res.status(200).json({ error: false, data: result }))
+    .catch(err => res.status(400).json({ error: true, message: 'bad request!' }))
 }
 
 exports.patchCategory = (req, res) => {
