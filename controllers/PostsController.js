@@ -1,8 +1,26 @@
 const Post = require('../models/post');
+const Category = require('../models/category');
+const Comment = require('../models/comment');
+const Tag = require('../models/tag');
+const Type = require('../models/type');
+const User = require('../models/user');
 
 exports.getAllPosts = (req, res) => {
     Post
-        .findAll()
+        .findAll({
+            include: [
+                {
+                    model: User,
+                    include: [{ model: Type }]
+                },
+                { model: Tag },
+                { model: Category },
+                {
+                    model: Comment,
+                    include: [{ model: User }]
+                }
+            ]
+        })
         .then((post) => {
             console.log(post)
             res.status(200).json({ error: false, data: post })
@@ -18,7 +36,7 @@ exports.addPosts = (req, res) => {
             title: title,
             description: description,
             urlImage: urlImage,
-            active: (active == 'on') ? 1 : 0
+            active: active
 
         })
         .then((post) => {
