@@ -4,7 +4,7 @@ const Type = require('../models/type');
 
 exports.getAllTypes = (req, res) => {
     Type
-        .findAll()
+        .findAll({ include: [{ model: User }] })
         .then((types) => {
             // console.log(types)
             res.status(200).json({ error: false, data: types })
