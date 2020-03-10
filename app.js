@@ -5,6 +5,7 @@ const cors = require('cors');
 
 // import routes
 const posts = require('./routes/posts');
+const users = require('./routes/users');
 
 // connection mysql
 const connection = require('./config/database');
@@ -19,8 +20,10 @@ const User = require('./models/user');
 const Tag = require('./models/tag');
 
 const app = express();
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
-
+app.use(users)
 
 User.belongsTo(Type);
 Type.hasMany(User);
