@@ -10,8 +10,7 @@ exports.getAllPosts = (req, res) => {
         .findAll({
             include: [
                 {
-                    model: User,
-                    include: [{ model: Type }]
+                    model: User
                 },
                 { model: Tag },
                 { model: Category },
@@ -29,14 +28,16 @@ exports.getAllPosts = (req, res) => {
 }
 
 exports.addPosts = (req, res) => {
-    let { title, description, urlImage, active } = req.body;
+    let { title, description, urlImage, active, userId, categoryId } = req.body;
 
     Post
         .create({
             title: title,
             description: description,
             urlImage: urlImage,
-            active: active
+            active: active,
+            userId: userId,
+            categoryId: categoryId
 
         })
         .then((post) => {
@@ -53,7 +54,7 @@ exports.updatePost = (req, res) => {
         title: title,
         description: description,
         urlImage: urlImage,
-        active: (active == 'on') ? 1 : 0
+        active: active
     }, {
         where: { id: req.params.id }
     })
@@ -63,7 +64,12 @@ exports.updatePost = (req, res) => {
 
 exports.showOnePost = (req, res) => {
 
-    Post.findByPk(req.params.id)
+    Post.findByPk(req.params.id, {
+        include: [
+            { model: User },
+            { model: Category }
+        ]
+    })
         .then(post => {
             res.status(200).json({ error: false, data: post })
         })
