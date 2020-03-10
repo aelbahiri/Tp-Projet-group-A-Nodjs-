@@ -1,5 +1,8 @@
 const express = require('express');
 
+
+
+
 const bodyParser = require('body-parser');
 
 //corse for port 
@@ -35,7 +38,6 @@ const Tag = require('./models/tag');
 
 // Midlle Ware
 app.use('/types', types)
-// app.use('/posts', posts)
 app.use('/categories', categories)
 app.use('/users', users)
 app.use('/posts', posts)

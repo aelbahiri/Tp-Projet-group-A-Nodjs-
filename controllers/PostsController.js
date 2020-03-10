@@ -30,6 +30,9 @@ exports.getAllPosts = (req, res) => {
 exports.addPosts = (req, res) => {
     let { title, description, urlImage, active, userId, categoryId } = req.body;
 
+    console.log(req.file)
+    // return
+
     Post
         .create({
             title: title,
