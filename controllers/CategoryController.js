@@ -1,5 +1,8 @@
 const Category = require('./../models/category');
 
+// ...rest of the initial code omitted for simplicity.
+const { validationResult } = require('express-validator');
+
 exports.getAllCategories = (req, res) => {
 
     Category
@@ -21,15 +24,24 @@ exports.getAllCategories = (req, res) => {
 
 exports.storeCategory = (req, res) => {
 
+    // Finds the validation errors in this request and wraps them in an object with handy functions
+    const errors = validationResult(req);
+    //   console.log(errors);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+
+    console.log(req.body)
+
     let {
         title,
         active
     } = req.body;
 
     Category.create({
-            title: title,
-            active: active
-        })
+        title: title,
+        active: active
+    })
         .then((category) => res.status(201).json({
             error: false,
             data: category
@@ -49,13 +61,13 @@ exports.updateCategory = (req, res) => {
     } = req.body;
 
     Category.update({
-            title: title,
-            active: (active == 'on') ? 1 : 0
-        }, {
-            where: {
-                id: req.params.id
-            }
-        })
+        title: title,
+        active: (active == 'on') ? 1 : 0
+    }, {
+        where: {
+            id: req.params.id
+        }
+    })
         .then((result) => res.status(202).json({
             error: false,
             data: result
@@ -86,8 +98,8 @@ exports.deleteCategory = (req, res) => {
     // return res.send('suppression')
     let id = req.params.id;
     Category.destroy({ where: { id: id } })
-    .then(result => res.status(200).json({ error: false, data: result }))
-    .catch(err => res.status(400).json({ error: true, message: 'bad request!' }))
+        .then(result => res.status(200).json({ error: false, data: result }))
+        .catch(err => res.status(400).json({ error: true, message: 'bad request!' }))
 }
 
 exports.patchCategory = (req, res) => {

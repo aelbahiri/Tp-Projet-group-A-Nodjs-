@@ -1,6 +1,9 @@
 const User = require('../models/user');
 const Type = require('../models/type');
 
+// ...rest of the initial code omitted for simplicity.
+const { validationResult } = require('express-validator');
+
 
 exports.getAllTypes = (req, res) => {
     Type
@@ -15,12 +18,21 @@ exports.getAllTypes = (req, res) => {
 
 exports.storeType = (req, res) => {
 
+    // Finds the validation errors in this request and wraps them in an object with handy functions
+    const errors = validationResult(req);
+    //   console.log(errors);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+
+    console.log(req.body)
+
     let { label, active } = req.body;
 
     Type.create({
-            label: label,
-            active: active
-        })
+        label: label,
+        active: active
+    })
         .then((type) => res.status(201).json({ error: false, data: type }))
         .catch((err) => res.status(400).json({ error: true, message: 'Bad request !' }))
 
@@ -30,11 +42,11 @@ exports.updateType = (req, res) => {
     let { label, active } = req.body;
 
     Type.update({
-            label: label,
-            active: active
-        }, {
-            where: { id: req.params.id }
-        })
+        label: label,
+        active: active
+    }, {
+        where: { id: req.params.id }
+    })
         .then((result) => res.status(202).json({ error: false, data: result }))
         .catch((err) => res.status(400).json({ error: true, message: "bad request !" }))
 }
@@ -60,8 +72,8 @@ exports.deleteType = (req, res) => {
 exports.patchType = (req, res) => {
 
     Type.update(req.body, {
-            where: { id: req.params.id }
-        })
+        where: { id: req.params.id }
+    })
         .then(result => res.status(200).json({ error: false, data: result }))
         .catch(err => res.status(400).json({ error: true, message: 'bad request!' }))
 }
