@@ -19,7 +19,7 @@ exports.storeType = (req, res) => {
 
     Type.create({
             label: label,
-            active: (active == 'on') ? 1 : 0
+            active: active
         })
         .then((type) => res.status(201).json({ error: false, data: type }))
         .catch((err) => res.status(400).json({ error: true, message: 'Bad request !' }))
@@ -31,7 +31,7 @@ exports.updateType = (req, res) => {
 
     Type.update({
             label: label,
-            active: (active == 'on') ? 1 : 0
+            active: active
         }, {
             where: { id: req.params.id }
         })

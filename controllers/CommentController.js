@@ -3,14 +3,14 @@ const Post = require('../models/post');
 const User = require('../models/user')
 
 exports.getAllComment = (req, res) => {
-   
+
     Comment
-        .findAll({ include: [{ model: Post,model: User}] })
+        .findAll({ include: [{ model: Post }, { model: User }] })
         .then((comments) => {
             console.log(comments)
             res.status(200).json({ error: false, data: comments })
         })
-        .catch(err => res.status(404).json({error: true, message: 'comments not found!'}))
+        .catch(err => res.status(404).json({ error: true, message: 'comments not found!' }))
 
 }
 
@@ -23,9 +23,9 @@ exports.storeComment = (req, res) => {
         postId: post,
         UserId: user
     })
-    .then((comments) => res.status(201).json({error: false, data: comments}))
-    .catch((err) => res.status(400).json({error: true, message: 'Bad request !'}))
-   
+        .then((comments) => res.status(201).json({ error: false, data: comments }))
+        .catch((err) => res.status(400).json({ error: true, message: 'Bad request !' }))
+
 }
 
 exports.updateComment = (req, res) => {
@@ -33,13 +33,13 @@ exports.updateComment = (req, res) => {
 }
 
 
-exports.deleteComment =  (req, res) => {
-    
+exports.deleteComment = (req, res) => {
+
     let id = req.params.id;
 
-   comment.destroy({ where: { id: id } })
-           .then(() => res.status(204).json({}))
-           .catch((err) => res.status(403).json({ error: true, message: 'impossible to delete this resource !' }))
+    comment.destroy({ where: { id: id } })
+        .then(() => res.status(204).json({}))
+        .catch((err) => res.status(403).json({ error: true, message: 'impossible to delete this resource !' }))
 }
 
 
